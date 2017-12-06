@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - geerlingguy.clamav
+    - geerlingguy.mysql
+    - geerlingguy.java
+    - andrewrothstein.python
+    - geerlingguy.php
+    - geerlingguy.php-mysql
+    - geerlingguy.apache
+    - geerlingguy.solr
