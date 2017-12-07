@@ -1,0 +1,13 @@
+---
+django_orb:
+  git_remote_url: "https://github.com/mPowering/django-orb.git"
+  git_version_reference: "v2.5.2"
+  path: "/var/www/platform/django-mpowering"
+
+orb_translations:
+  git_remote_url: "https://github.com/mPowering/orb-translations.git"
+  git_version_reference: "v1.0.0"
+  path: "/var/www/platform/orb-translations"
+
+orb_virtualenv_path: "/var/www/platform/env"
+orb_pip_requirements: "/var/www/platform/django-mpowering/requirements.txt"

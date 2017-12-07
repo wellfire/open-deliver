@@ -2,6 +2,7 @@
 - hosts: all
   become: true
   roles:
+    - { role: common, tags: [ 'common' ] }
     - geerlingguy.clamav
     - geerlingguy.mysql
     - geerlingguy.java
@@ -10,3 +11,4 @@
     - geerlingguy.php-mysql
     - geerlingguy.apache
     - geerlingguy.solr
+    - { role: orb, tags: [ 'orb', 'app' ] }

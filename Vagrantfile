@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
 
   # Share additional folders to the guest VM.
-  config.vm.synced_folder "platform", "/home/vagrant/scripts"
+  # config.vm.synced_folder "platform", "/home/vagrant/scripts"
 
   # Bash provision script
   config.vm.provision "shell", path: "setup.sh"
@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.verbose = "true"
         ansible.ask_sudo_pass = false
         ansible.host_key_checking = false
+        ansible.tags = "orb,common"
     end
 
 end

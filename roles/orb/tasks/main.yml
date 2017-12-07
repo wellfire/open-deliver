@@ -1,0 +1,17 @@
+---
+- name: Add ORB from Git
+  git:
+    repo: "{{django_orb.git_remote_url}}"
+    dest: "{{django_orb.path}}"
+    version: "{{django_orb.git_version_reference}}"
+
+- name: Add orb-translations from Git
+  git:
+    repo: "{{orb_translations.git_remote_url}}"
+    dest: "{{orb_translations.path}}"
+    version: "{{orb_translations.git_version_reference}}"
+
+- name: Set up ORB virtualenv
+  pip:
+    virtualenv: "{{orb_virtualenv_path}}"
+    requirements: "{{orb_pip_requirements}}"

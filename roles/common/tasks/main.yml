@@ -1,0 +1,16 @@
+---
+- name: Ensure git is installed.
+  apt:
+    name: "git"
+    state: installed
+
+# Required for installing Python-MySQL
+- name: Ensure Mysql client installed.
+  apt:
+    name: "libmysqlclient-dev"
+    state: installed
+
+- name: Ensure Python headers installed.
+  apt:
+    name: "python-dev"
+    state: installed
