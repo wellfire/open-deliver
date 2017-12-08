@@ -22,3 +22,61 @@
     state: present
   tags:
     - mysql
+
+- name: ORB static directory
+  file:
+    path: "{{orb_static_path}}"
+    state: directory
+    mode: 0755
+
+- name: ORB media directory
+  file:
+    path: "{{orb_media_path}}"
+    state: directory
+    mode: 0755
+
+- name: ORB config directory
+  file:
+    path: "{{orb_config_path}}"
+    state: directory
+    mode: 0755
+
+- name: ORB wsgi file
+  template:
+    src: "wsgi.py.j2"
+    dest: "{{orb_config_path}}/wsgi.py"
+
+- name: ORB settings file
+  template:
+    src: "settings.py.j2"
+    dest: "{{orb_config_path}}/settings.py"
+
+- name: ORB urls file
+  template:
+    src: "urls.py.j2"
+    dest: "{{orb_config_path}}/urls.py"
+
+- name: ORB manage file
+  template:
+    src: "manage.py.j2"
+    dest: "{{orb_config_path}}/manage.py"
+
+- name: ORB clean uploads script
+  template:
+    src: "clean_uploads.sh.j2"
+    dest: "{{orb_root}}/clean_uploads.py"
+
+- name: ORB cron script
+  template:
+    src: "cron.sh.j2"
+    dest: "{{orb_root}}/cron.sh"
+
+- name: ORB link checker script
+  template:
+    src: "link-checker.sh.j2"
+    dest: "{{orb_root}}/link-checker.sh"
+
+- name: ORB virus scan script
+  template:
+    src: "virus-scan.sh.j2"
+    dest: "{{orb_root}}/virus-scan.sh"

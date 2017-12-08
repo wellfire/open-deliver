@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TO='alex@digital-campus.org'
+FROM='info@mpoweringhealth.org'
+
+sudo freshclam
+
+RESULTS=`sudo clamscan -r /home/www/platform/media/`
+
+/usr/sbin/sendmail -f $FROM $TO <<EOF
+subject:[ORB] Virus scan results
+from:$FROM
+$RESULTS
+EOF

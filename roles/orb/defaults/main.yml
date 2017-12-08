@@ -1,4 +1,8 @@
 ---
+
+orb_root: "/var/www/platform"
+orb_install_path: "{{orb_root}}/django-mpowering"
+
 django_orb:
   git_remote_url: "https://github.com/mPowering/django-orb.git"
   git_version_reference: "v2.5.2"
@@ -13,3 +17,10 @@ orb_virtualenv_path: "/var/www/platform/env"
 orb_pip_requirements: "/var/www/platform/django-mpowering/requirements.txt"
 
 orb_mysql_db: "django_mpowering"
+
+orb_static_path: "{{orb_root}}/static"
+orb_media_path: "{{orb_root}}/media"
+
+orb_config_path: "{{orb_root}}/mpower"
+
+orb_django_settings_module: "mpower.settings"

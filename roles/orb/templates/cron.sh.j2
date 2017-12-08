@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cd /home/www/platform/env/
+source bin/activate
+
+PYTHONPATH="/home/www/platform/django-mpowering/:/home/www/platform/:/home/www/platform/env/lib/python2.7/site-packages"
+export PYTHONPATH
+export DJANGO_SETTINGS_MODULE=mpower.settings
+
+python /home/www/platform/manage.py clearsessions
+
+#python /home/www/platform/django-mpowering/orb/utils/ip2location.py <userid>
+
+#python /home/www/platform/django-mpowering/orb/utils/cartodb_update.py <username> <api_key> <site_url>
+
+#python /home/www/platform/django-mpowering/orb/utils/cartodb_countries.py <username> <api_key>
+
+python /home/www/platform/django-mpowering/orb/utils/extract_text.py
+
