@@ -15,3 +15,10 @@
   pip:
     virtualenv: "{{orb_virtualenv_path}}"
     requirements: "{{orb_pip_requirements}}"
+
+- name: Set up ORB database
+  mysql_db:
+    name: "{{orb_mysql_db}}"
+    state: present
+  tags:
+    - mysql

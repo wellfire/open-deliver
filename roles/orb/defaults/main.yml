@@ -11,3 +11,5 @@ orb_translations:
 
 orb_virtualenv_path: "/var/www/platform/env"
 orb_pip_requirements: "/var/www/platform/django-mpowering/requirements.txt"
+
+orb_mysql_db: "django_mpowering"
