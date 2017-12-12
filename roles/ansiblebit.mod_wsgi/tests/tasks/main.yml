@@ -1,0 +1,10 @@
+---
+# file: mod_wsgi/tests/tasks/main.yml
+#
+# test tasks.
+#
+
+- include: "{{ mod_wsgi_installation }}/main.yml"
+
+- include: script.yml
+  tags: scripts

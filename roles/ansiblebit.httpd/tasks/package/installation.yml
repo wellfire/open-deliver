@@ -1,0 +1,12 @@
+---
+# file: httpd/tasks/package/installation.yml
+#
+# package installation tasks.
+#
+
+- name: package | installation | ensure apache2 is installed
+  apt:
+    name=apache2
+    state=present
+    version="{{ httpd_version | default(omit) }}"
+  become: yes

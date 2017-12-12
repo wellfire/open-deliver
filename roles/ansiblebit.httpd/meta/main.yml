@@ -1,0 +1,28 @@
+---
+# file: httpd/meta/main.yml
+#
+# meta file
+#
+galaxy_info:
+  author: Pedro Salgado
+  description: Ansible role to setup the Apache HTTP server.
+  company: ansiblebit.org
+  license: BSD
+  min_ansible_version: 2.0
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - wheezy
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty
+        - precise
+  galaxy_tags:
+    - apache
+    - debian
+    - httpd
+    - ubuntu
+    - web
+dependencies: []

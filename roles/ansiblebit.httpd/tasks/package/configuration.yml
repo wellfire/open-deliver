@@ -1,0 +1,62 @@
+---
+# file: httpd/tasks/package/configuration.yml
+#
+# package configuration tasks.
+#
+
+- name: package | configuration | setup configuration directories
+  file:
+    path="{{ httpd_dir_configuration }}/{{ item }}"
+    owner=root
+    group=root
+    mode=0755
+    state=directory
+  become: yes
+  with_items:
+    - ''
+    - conf-available
+    - conf-enabled
+    - mods-available
+    - mods-enabled
+    - sites-available
+    - sites-enabled
+
+- name: package | configuration | /etc/default/httpd
+  template:
+    src=etc/default/httpd.j2
+    dest="/etc/default/{{ httpd_service }}"
+    owner=root
+    group=root
+    mode=0644
+  become: yes
+  notify: restart httpd
+
+- name: package | configuration | apache2.conf
+  template:
+    src=etc/httpd/httpd.conf.j2
+    dest="{{ httpd_dir_configuration }}/apache2.conf"
+    owner=root
+    group=root
+    mode=0644
+  become: yes
+  notify: restart httpd
+
+- name: package | configuration | envvars
+  copy:
+    content="{{ httpd_configuration_envvars }}"
+    dest="{{ httpd_dir_configuration }}/envvars"
+    owner=root
+    group=root
+    mode=0644
+  become: yes
+  notify: restart httpd
+
+- name: package | configuration | /etc/httpd/ports.conf
+  template:
+    src=etc/httpd/ports.conf.j2
+    dest="{{ httpd_dir_configuration }}/ports.conf"
+    owner=root
+    group=root
+    mode=0644
+  become: yes
+  notify: restart httpd

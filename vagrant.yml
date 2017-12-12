@@ -5,12 +5,13 @@
     - vars/main.yml
   roles:
     - { role: common, tags: [ 'common' ] }
-    - geerlingguy.clamav
+    - { role: geerlingguy.clamav, tags: [ 'common' ] }
     - { role: geerlingguy.mysql, tags: [ 'mysql' ] }
-    - geerlingguy.java
-    - andrewrothstein.python
-    - geerlingguy.php
-    - geerlingguy.php-mysql
-    - geerlingguy.apache
-    - geerlingguy.solr
+    - { role: geerlingguy.java, tags: [ 'java' ] }
+    - { role: andrewrothstein.python, tags: [ 'python' ] }
+    - { role: geerlingguy.php, tags: [ 'php' ] }
+    - { role: geerlingguy.php-mysql, tags: [ 'mysql', 'php' ] }
+    - { role: geerlingguy.apache, tags: [ 'apache', 'web' ] }
+    - { role: ansiblebit.mod_wsgi, tags: [ 'apache', 'web' ] }
+    - { role: geerlingguy.solr, tags: [ 'solr' ] }
     - { role: orb, tags: [ 'orb', 'app' ] }

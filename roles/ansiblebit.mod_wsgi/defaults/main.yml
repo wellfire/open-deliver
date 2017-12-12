@@ -1,0 +1,11 @@
+---
+# file: mod_wsgi/defaults/main.yml
+#
+# defaults file
+#
+
+mod_wsgi_dir_scripts: /var/www/wsgi
+mod_wsgi_installation: package
+mod_wsgi_scripts: []
+mod_wsgi_use_httpd: false
+httpd_user: "www-data"

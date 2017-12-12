@@ -1,0 +1,23 @@
+---
+# file: httpd/handlers/main.yml
+#
+# handlers file
+#
+
+- name: start httpd
+  service:
+    name="{{ httpd_service }}"
+    state=started
+  become: yes
+
+- name: stop httpd
+  service:
+    name="{{ httpd_service }}"
+    state=stopped
+  become: yes
+
+- name: restart httpd
+  service:
+    name="{{ httpd_service }}"
+    state=restarted
+  become: yes

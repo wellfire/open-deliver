@@ -1,0 +1,16 @@
+---
+# file: httpd/tasks/package/main.yml
+#
+# package tasks file
+#
+
+- include: debug.yml
+  when: debug | default(false)
+  tags: debug
+
+- name: package | installation | ensure mod_wsgi is installed
+  apt:
+    name=libapache2-mod-wsgi
+    state=present
+    version="{{ mod_wsgi_version | default(omit) }}"
+  become: yes

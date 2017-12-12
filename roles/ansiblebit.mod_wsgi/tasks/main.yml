@@ -1,0 +1,15 @@
+---
+# file: mod_wsgi/tasks/main.yml
+#
+# tasks file
+#
+
+- include: debug.yml
+  when: debug | default(false)
+  tags: debug
+
+- include: "{{ mod_wsgi_installation }}/main.yml"
+  tags: installation
+
+- include: script.yml
+  tags: scripts

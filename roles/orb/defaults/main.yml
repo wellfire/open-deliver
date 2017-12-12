@@ -1,26 +1,31 @@
 ---
 
-orb_root: "/var/www/platform"
+orb_root: "/home/www/platform"
 orb_install_path: "{{orb_root}}/django-mpowering"
 
 django_orb:
   git_remote_url: "https://github.com/mPowering/django-orb.git"
   git_version_reference: "v2.5.2"
-  path: "/var/www/platform/django-mpowering"
+  path: "{{orb_root}}/django-mpowering"
 
 orb_translations:
   git_remote_url: "https://github.com/mPowering/orb-translations.git"
   git_version_reference: "v1.0.0"
-  path: "/var/www/platform/orb-translations"
+  path: "{{orb_root}}/orb-translations"
 
-orb_virtualenv_path: "/var/www/platform/env"
-orb_pip_requirements: "/var/www/platform/django-mpowering/requirements.txt"
+orb_virtualenv_path: "{{orb_root}}/env"
+orb_pip_requirements: "{{orb_root}}/django-mpowering/requirements.txt"
 
 orb_mysql_db: "django_mpowering"
 
 orb_static_path: "{{orb_root}}/static"
 orb_media_path: "{{orb_root}}/media"
 
-orb_config_path: "{{orb_root}}/mpower"
+orb_base_project: "{{orb_root}}/mpower"
+orb_config_path: "{{orb_base_project}}/mpower"
+orb_wsgi_path: "{{orb_config_path}}/wsgi.py"
 
 orb_django_settings_module: "mpower.settings"
+
+orb_server_name: "orb.localhost"
+orb_vhosts_filename: "orb-http.conf"

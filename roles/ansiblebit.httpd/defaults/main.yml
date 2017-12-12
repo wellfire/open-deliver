@@ -1,0 +1,155 @@
+---
+# file: httpd/defaults/main.yml
+#
+# defaults file
+#
+
+httpd_configuration_envvars: |
+  # envvars - default environment variables for apache2ctl
+  # this won't be correct after changing uid
+  unset HOME
+  # for supporting multiple apache2 instances
+  if [ "${APACHE_CONFDIR##/etc/apache2-}" != "${APACHE_CONFDIR}" ] ; then
+      SUFFIX="-${APACHE_CONFDIR##/etc/apache2-}"
+  else
+      SUFFIX=
+  fi
+  # Since there is no sane way to get the parsed apache2 config in scripts, some
+  # settings are defined via environment variables and then used in apache2ctl,
+  # /etc/init.d/apache2, /etc/logrotate.d/apache2, etc.
+  export APACHE_RUN_USER=www-data
+  export APACHE_RUN_GROUP=www-data
+  # temporary state file location. This might be changed to /run in Wheezy+1
+  export APACHE_PID_FILE=/var/run/apache2/apache2$SUFFIX.pid
+  export APACHE_RUN_DIR=/var/run/apache2$SUFFIX
+  export APACHE_LOCK_DIR=/var/lock/apache2$SUFFIX
+  # Only /var/log/apache2 is handled by /etc/logrotate.d/apache2.
+  export APACHE_LOG_DIR=/var/log/apache2$SUFFIX
+  ## The locale used by some modules like mod_dav
+  export LANG=C
+  ## Uncomment the following line to use the system default locale instead:
+  #. /etc/default/locale
+  export LANG
+  ## The command to get the status for 'apache2ctl status'.
+  ## Some packages providing 'www-browser' need '--dump' instead of '-dump'.
+  #export APACHE_LYNX='www-browser -dump'
+  ## If you need a higher file descriptor limit, uncomment and adjust the
+  ## following line (default is 8192):
+  #APACHE_ULIMIT_MAX_FILES='ulimit -n 65536'
+  ## If you would like to pass arguments to the web server, add them below
+  ## to the APACHE_ARGUMENTS environment.
+  #export APACHE_ARGUMENTS=''
+  ## Enable the debug mode for maintainer scripts.
+  ## This will produce a verbose output on package installations of web server modules and web application
+  ## installations which interact with Apache
+  #export APACHE2_MAINTSCRIPT_DEBUG=1
+
+httpd_installation: package
+
+httpd_modules:
+  - access_compat
+  - actions
+  - alias
+  - allowmethods
+  - asis
+  - auth_basic
+  - auth_digest
+  - auth_form
+  - authn_anon
+  - authn_core
+  - authn_dbd
+  - authn_dbm
+  - authn_file
+  - authn_socache
+  - authnz_ldap
+  - authz_core
+  - authz_dbd
+  - authz_dbm
+  - authz_groupfile
+  - authz_host
+  - authz_owner
+  - authz_user
+  - autoindex
+  - buffer
+  - cache
+  - cache_disk
+  - cache_socache
+  - cgi
+  - cgid
+  - charset_lite
+  - data
+  - dav
+  - dav_fs
+  - dav_lock
+  - dbd
+  - deflate
+  - dialup
+  - dir
+  - dump_io
+  - echo
+  - env
+  - expires
+  - ext_filter
+  - file_cache
+  - filter
+  - headers
+  - heartbeat
+  - heartmonitor
+  - include
+  - info
+  - lbmethod_bybusyness
+  - lbmethod_byrequests
+  - lbmethod_bytraffic
+  - lbmethod_heartbeat
+  - ldap
+  - log_debug
+  - log_forensic
+  - lua
+  - macro
+  - mime
+  - mime_magic
+  - mpm_event
+  - mpm_prefork
+  - mpm_worker
+  - negotiation
+  - proxy
+  - proxy_ajp
+  - proxy_balancer
+  - proxy_connect
+  - proxy_express
+  - proxy_fcgi
+  - proxy_fdpass
+  - proxy_ftp
+  - proxy_html
+  - proxy_http
+  - proxy_scgi
+  - proxy_wstunnel
+  - ratelimit
+  - reflector
+  - remoteip
+  - reqtimeout
+  - request
+  - rewrite
+  - sed
+  - session
+  - session_cookie
+  - session_crypto
+  - session_dbd
+  - setenvif
+  - slotmem_plain
+  - slotmem_shm
+  - socache_dbm
+  - socache_memcache
+  - socache_shmcb
+  - speling
+  - ssl
+  - status
+  - substitute
+  - suexec
+  - unique_id
+  - unixd
+  - userdir
+  - usertrack
+  - vhost_alias
+  - wsgi
+  - xml2enc

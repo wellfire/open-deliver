@@ -1,0 +1,11 @@
+---
+# file: mod_wsgi/tests/tasks/build/build.yml
+#
+# Test tasks to verify package installation.
+#
+
+- name: is libapache2-mod-wsgi package installed?
+  command: dpkg-query -W -f='${Status}\n' libapache2-mod-wsgi
+  register: test
+  changed_when: no
+  failed_when: test.stdout.find('install ok installed') == -1

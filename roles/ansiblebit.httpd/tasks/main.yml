@@ -1,0 +1,40 @@
+---
+# file: httpd/tasks/main.yml
+#
+# tasks file
+#
+
+## include OS family specific variables
+
+- name: include OS family/distribution specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - skip: true
+      files:
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+
+
+## include installation method variables
+
+- include_vars: "{{ httpd_installation }}.yml"
+
+
+## install
+
+- include: debug.yml
+  when: debug | default(false)
+  tags: debug
+
+- include: "{{ httpd_installation }}/main.yml"
+  tags: installation
+
+- include: modules.yml
+  tags: modules
+
+- include: sites.yml
+  tags: sites
+
+- include: conf.yml
+  tags: conf

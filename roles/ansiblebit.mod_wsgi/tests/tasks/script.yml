@@ -1,0 +1,48 @@
+---
+# file: mod_wsgi/tests/tasks/main.yml
+#
+# tests to check WSGI script generation.
+#
+
+- name: scripts | script files are present?
+  command: "test -e {{ mod_wsgi_dir_scripts }}/{{ item.name }}.wsgi"
+  with_items: "{{ mod_wsgi_scripts }}"
+  become: yes
+  changed_when: no
+
+- name: scripts | upload test resources
+  copy:
+    src="files/{{ item }}"
+    dest="/tmp/{{ item.replace('/', '_') }}.expected"
+    owner="{{ httpd_user.name }}"
+    group="{{ httpd_user.name }}"
+    mode=0644
+  become: yes
+  with_items:
+    - tmp/out
+    - var/www/wsgi/example.wsgi
+  changed_when: no
+
+- name: scripts | ensure WSGI scripts were generated as expected
+  command: "diff -q -w /{{ item }} /tmp/{{ item.replace('/', '_') }}.expected"
+  become: yes
+  with_items:
+    - var/www/wsgi/example.wsgi
+  changed_when: no
+
+- name: scripts | access WSGI application
+  get_url:
+    url=http://127.0.0.1/
+    dest=/tmp/out
+    mode=0440
+  become: yes
+  when: env == 'vagrant'
+  changed_when: no
+
+- name: scripts | ensure WSGI script is running
+  command: "diff -q -w /{{ item }} /tmp/{{ item.replace('/', '_') }}.expected"
+  become: yes
+  with_items:
+    - tmp/out
+  when: env == 'vagrant'
+  changed_when: no

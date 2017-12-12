@@ -44,7 +44,7 @@
 - name: ORB wsgi file
   template:
     src: "wsgi.py.j2"
-    dest: "{{orb_config_path}}/wsgi.py"
+    dest: "{{orb_wsgi_path}}"
 
 - name: ORB settings file
   template:
@@ -59,7 +59,7 @@
 - name: ORB manage file
   template:
     src: "manage.py.j2"
-    dest: "{{orb_config_path}}/manage.py"
+    dest: "{{orb_base_project}}/manage.py"
 
 - name: ORB clean uploads script
   template:
@@ -80,3 +80,19 @@
   template:
     src: "virus-scan.sh.j2"
     dest: "{{orb_root}}/virus-scan.sh"
+
+- name: ORB Apache conf
+  template:
+    src: "http-vhost.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/{{ orb_vhosts_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+
+- name: Enable ORB apache conf
+  file:
+    src: "{{ apache_conf_path }}/sites-available/{{ orb_vhosts_filename }}"
+    dest: "{{ apache_conf_path }}/sites-enabled/{{ orb_vhosts_filename }}"
+    state: link
+  notify: restart apache

@@ -1,0 +1,41 @@
+---
+# file: mod_wsgi/tasks/script.yml
+#
+# WSGI script tasks.
+#
+
+- name: scripts | setup directory
+  file:
+    path="{{ mod_wsgi_dir_scripts }}"
+    state=directory
+    owner="{{ httpd_user }}"
+    group="{{ httpd_user }}"
+    mode=0755
+  become: yes
+
+- name: scripts | setup
+  template:
+    src=var/www/wsgi/script.wsgi.j2
+    dest="{{ mod_wsgi_dir_scripts }}/{{ item.name }}.wsgi"
+    owner="{{ httpd_user }}"
+    group="{{ httpd_user }}"
+    mode=0644
+  become: yes
+  with_items: "{{ mod_wsgi_scripts }}"
+  when: "{{ mod_wsgi_use_httpd is defined and
+        mod_wsgi_use_httpd and
+        item.enable is defined and
+        item.enable }}"
+  notify: restart httpd
+
+- name: scripts | removal
+  file:
+    path="{{ mod_wsgi_dir_scripts }}/{{ item.name }}.wsgi"
+    state=absent
+  become: yes
+  with_items: "{{ mod_wsgi_scripts }}"
+  when: "{{ mod_wsgi_use_httpd is defined and
+        mod_wsgi_use_httpd and
+        item.enable is defined and
+        not item.enable }}"
+  notify: restart httpd

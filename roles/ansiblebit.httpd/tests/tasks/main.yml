@@ -1,0 +1,10 @@
+---
+# file: httpd/tests/tasks/main.yml
+#
+# tasks file
+#
+
+- include: "{{ httpd_installation }}/main.yml"
+
+- include: modules.yml
+  tags: modules

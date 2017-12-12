@@ -1,2 +1,28 @@
 ---
 mysql_root_password: super-secure-password
+apache_mods_disabled:
+  - mpm_event.load
+apache_mods_enabled:
+  - access_compat.load
+  - alias.load
+  - auth_basic.load
+  - authn_core.load
+  - authn_file.load
+  - authz_core.load
+  - authz_host.load
+  - authz_user.load
+  - autoindex.load
+  - deflate.load
+  - dir.load
+  - env.load
+  - filter.load
+  - mime.load
+  - mpm_prefork.load
+  - negotiation.load
+#  - php5.load
+  - rewrite.load
+  - setenvif.load
+  - socache_shmcb.load
+  - ssl.load
+  - status.load
+#  - mod_wsgi
