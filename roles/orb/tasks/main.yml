@@ -41,6 +41,11 @@
     state: directory
     mode: 0755
 
+- name: ORB config module file
+  template:
+    src: "init.py.j2"
+    dest: "{{orb_config_path}}/__init__.py"
+
 - name: ORB wsgi file
   template:
     src: "wsgi.py.j2"
