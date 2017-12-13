@@ -1,5 +1,7 @@
 ---
 
+orb_user: "ubuntu"
+
 orb_root: "/home/www/platform"
 orb_install_path: "{{orb_root}}/django-mpowering"
 
@@ -17,9 +19,11 @@ orb_virtualenv_path: "{{orb_root}}/env"
 orb_pip_requirements: "{{orb_root}}/django-mpowering/requirements.txt"
 
 orb_mysql_db: "django_mpowering"
+orb_mysql_user: "mpower"
+orb_mysql_password: "mpower"
 
-orb_static_path: "{{orb_root}}/static"
-orb_media_path: "{{orb_root}}/media"
+orb_static_root: "{{orb_root}}/static"
+orb_media_root: "{{orb_root}}/media"
 
 orb_base_project: "{{orb_root}}/mpower"
 orb_config_path: "{{orb_base_project}}/mpower"
@@ -29,3 +33,11 @@ orb_django_settings_module: "mpower.settings"
 
 orb_server_name: "orb.localhost"
 orb_vhosts_filename: "orb-http.conf"
+
+orb_debug: "True"
+
+orb_allowed_hosts:
+  - "orb.localhost"
+  - "od-orb.alexlittle.net"
+
+orb_secret_key: "4h*u))+!m_4dj=eea5i!6od+ic9o+u3tg_1y26myy)t+qt5ta="

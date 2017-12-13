@@ -1,0 +1,19 @@
+---
+
+- name: migrate data database changes
+  django_manage:
+    command: migrate
+    app_path: "{{orb_base_project}}"
+    settings: "{{orb_django_settings_module}}"
+    virtualenv: "{{orb_virtualenv_path}}"
+  tags:
+    - deploy
+
+- name: copy site static assets
+  django_manage:
+    command: collectstatic
+    app_path: "{{orb_base_project}}"
+    settings: "{{orb_django_settings_module}}"
+    virtualenv: "{{orb_virtualenv_path}}"
+  tags:
+    - deploy
