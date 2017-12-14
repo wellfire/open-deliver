@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /home/www/oppia/env/
+source bin/activate
+
+PYTHONPATH="/home/www/oppia/:/home/www/oppia/env/lib/python2.7/site-packages"
+export PYTHONPATH
+export DJANGO_SETTINGS_MODULE=oppia_core.settings
+
+python /home/www/oppia/django-oppia/oppia/summary/cron.py
+
+
+

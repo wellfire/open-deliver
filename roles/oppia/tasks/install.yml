@@ -1,0 +1,114 @@
+---
+
+- name:
+  user:
+    name: "{{oppia_user}}"
+    state: present
+
+- name: Add Oppia from Git
+  git:
+    repo: "{{django_oppia.git_remote_url}}"
+    dest: "{{django_oppia.path}}"
+    version: "{{django_oppia.git_version_reference}}"
+
+- name: Set up Oppia virtualenv
+  pip:
+    virtualenv: "{{oppia_virtualenv_path}}"
+    requirements: "{{oppia_pip_requirements}}"
+
+- name: Install other packages unspecified
+  pip:
+    name: "{{ item}}"
+    virtualenv: "{{oppia_virtualenv_path}}"
+  with_items:
+    - "MySQL-python==1.2.5"
+
+- name: Set up Oppia database
+  mysql_db:
+    name: "{{oppia_mysql_db}}"
+    state: present
+  tags:
+    - mysql
+
+- name: Set up Oppia database user
+  mysql_user:
+    name: "{{oppia_mysql_user}}"
+    password: "{{oppia_mysql_password}}"
+    priv: '*.*:ALL'
+    state: present
+
+- name: Oppia static directory
+  file:
+    path: "{{oppia_static_root}}"
+    state: directory
+    mode: 0755
+    owner: "{{oppia_user}}"
+    group: "{{oppia_user}}"
+
+- name: Oppia media directory
+  file:
+    path: "{{oppia_media_root}}"
+    state: directory
+    mode: 0755
+    owner: "{{oppia_user}}"
+    group: "{{oppia_user}}"
+
+- name: Oppia config directory
+  file:
+    path: "{{oppia_config_path}}"
+    state: directory
+    mode: 0755
+
+- name: Oppia config module file
+  template:
+    src: "init.py.j2"
+    dest: "{{oppia_config_path}}/__init__.py"
+
+- name: Oppia wsgi file
+  template:
+    src: "wsgi.py.j2"
+    dest: "{{oppia_wsgi_path}}"
+
+- name: Oppia settings file
+  template:
+    src: "settings.py.j2"
+    dest: "{{oppia_config_path}}/settings.py"
+
+- name: Oppia urls file
+  template:
+    src: "urls.py.j2"
+    dest: "{{oppia_config_path}}/urls.py"
+
+- name: Oppia manage file
+  template:
+    src: "manage.py.j2"
+    dest: "{{oppia_root}}/manage.py"
+    owner: "{{oppia_user}}"
+    group: "{{oppia_user}}"
+    mode: "a+x"
+
+- name: Oppia cron script
+  template:
+    src: "cron.sh.j2"
+    dest: "{{oppia_root}}/cron.sh"
+
+- name: Oppia cron summary script
+  template:
+    src: "cron-summary.sh.j2"
+    dest: "{{oppia_root}}/cron.sh"
+
+- name: Oppia Apache conf
+  template:
+    src: "http-vhost.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/{{ oppia_vhosts_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+
+- name: Enable Oppia apache conf
+  file:
+    src: "{{ apache_conf_path }}/sites-available/{{ oppia_vhosts_filename }}"
+    dest: "{{ apache_conf_path }}/sites-enabled/{{ oppia_vhosts_filename }}"
+    state: link
+  notify: restart apache

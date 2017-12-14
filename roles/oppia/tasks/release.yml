@@ -1,0 +1,19 @@
+---
+
+- name: migrate data database changes
+  django_manage:
+    command: migrate
+    app_path: "{{oppia_root}}"
+    settings: "{{oppia_django_settings_module}}"
+    virtualenv: "{{oppia_virtualenv_path}}"
+  tags:
+    - deploy
+
+- name: copy site static assets
+  django_manage:
+    command: collectstatic
+    app_path: "{{oppia_root}}"
+    settings: "{{oppia_django_settings_module}}"
+    virtualenv: "{{oppia_virtualenv_path}}"
+  tags:
+    - deploy

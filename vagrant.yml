@@ -15,3 +15,4 @@
     - { role: ansiblebit.mod_wsgi, tags: [ 'apache', 'web' ] }
     - { role: geerlingguy.solr, tags: [ 'solr' ] }
     - { role: orb, tags: [ 'orb', 'app' ] }
+    - { role: oppia, tags: [ 'oppia', 'app' ] }

@@ -1,0 +1,42 @@
+---
+
+oppia_user: "ubuntu"
+
+oppia_root: "/home/www/oppia"
+oppia_install_path: "{{oppia_root}}/django-oppia"
+
+django_oppia:
+  git_remote_url: "https://github.com/mPowering/django-oppia.git"
+  git_version_reference: "1524cbf7a91d41f955c80279d9d0a1cb6cc8841a"
+  path: "{{oppia_root}}/django-oppia"
+
+oppia_virtualenv_path: "{{oppia_root}}/env"
+oppia_pip_requirements: "{{oppia_install_path}}/requirements.txt"
+
+oppia_mysql_db: "oppia"
+oppia_mysql_user: "oppiauser"
+oppia_mysql_password: "verygoodpassword"
+
+oppia_static_root: "{{oppia_root}}/static"
+oppia_media_root: "{{oppia_root}}/media"
+
+oppia_base_project: "{{oppia_root}}/oppia_core"
+oppia_config_path: "{{oppia_base_project}}"
+oppia_wsgi_path: "{{oppia_config_path}}/wsgi.py"
+oppia_wsgi_group: "localhost.oppia"
+
+oppia_django_settings_module: "oppia_core.settings"
+
+oppia_server_name: "oppia.localhost"
+oppia_vhosts_filename: "oppia-http.conf"
+
+oppia_debug: "True"
+
+oppia_allowed_hosts:
+  - "oppia.localhost"
+  - "od-oppia.alexlittle.net"
+
+oppia_secret_key: "4h*u))+!m_4dj=fea5i!6od+ic9o+u3tg_1y26myy)t+qt5ta="
+
+oppia_apache_access_log: "/var/log/apache2/oppia-access.log"
+oppia_apache_error_log: "/var/log/apache2/oppia-error.log"
