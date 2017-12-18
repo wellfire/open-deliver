@@ -2,15 +2,24 @@
 Open Deliver: Platform & Packaging
 ==================================
 
-A packaged combination of ORB, Oppia, and Moodle.
+A packaged combination of ORB, Oppia, and Moodle for delivering training content
+to frontline health workers.
+
+> Open Deliver streamlines digital training by reconfiguring and integrating
+> existing technologies. These technologies consist of a digital content sharing
+> library, a learning management system (LMS), and a mobile application (app).
+> mPowering typically uses ORB as the content sharing library, Moodle for the LMS
+> and OppiaMobile as the Android based application.
+
+For more information see http://mpoweringhealth.org/resources/open-deliver/
 
 Overview
 ========
 
-This project uses `Ansible<https://docs.ansible.com/>`_ playbooks to build and
-provision either a `Vagrant<https://www.vagrantup.com/>`_ based
-`VirtualBox<https://www.virtualbox.org/>`_ virtual machine or 'plain' VirtualBox
-VMs using `Packer<https://www.packer.io/>`_.
+This project uses `Ansible <https://docs.ansible.com/>`_ playbooks to build and
+provision either a `Vagrant <https://www.vagrantup.com/>`_ based
+`VirtualBox <https://www.virtualbox.org/>`_ virtual machine or 'plain' VirtualBox
+VMs using `Packer <https://www.packer.io/>`_.
 
 Vagrant boxes are suitable for development and debugging, and this is included
 as the primary means for working on Open Deliver configuration changes.
@@ -49,8 +58,22 @@ This will create a new `ovf` file in the `builds/` directory.
 Configuration
 =============
 
+The builds, Vagrant and Packer, respectively, use shell scripting to bootstrap
+the configuration process (namely updating packages and installing Python on the
+image for use by Ansible) and then use Ansible playbooks for managing the
+detailded service and content configurations.
+
 Roles
 -----
+
+Non-proprietary roles have been sources from `Ansible Galaxy
+<https://galaxy.ansible.com/>`_ where possible.
+
+Variables
+---------
+
+Variables used in the top-level variables folder are used to satisfy predefined
+variable names in existing roles, e.g. Apache.
 
 
 Vagrant
@@ -59,3 +82,4 @@ Vagrant
 
 Packaging
 =========
+
