@@ -5,11 +5,11 @@ Open Deliver: Platform & Packaging
 A packaged combination of ORB, Oppia, and Moodle for delivering training content
 to frontline health workers.
 
-> Open Deliver streamlines digital training by reconfiguring and integrating
-> existing technologies. These technologies consist of a digital content sharing
-> library, a learning management system (LMS), and a mobile application (app).
-> mPowering typically uses ORB as the content sharing library, Moodle for the LMS
-> and OppiaMobile as the Android based application.
+    Open Deliver streamlines digital training by reconfiguring and integrating
+    existing technologies. These technologies consist of a digital content sharing
+    library, a learning management system (LMS), and a mobile application (app).
+    mPowering typically uses ORB as the content sharing library, Moodle for the LMS
+    and OppiaMobile as the Android based application.
 
 For more information see http://mpoweringhealth.org/resources/open-deliver/
 
