@@ -1,7 +1,7 @@
 <VirtualHost *:80>
 
 	ServerName {{oppia_server_name}}
-	WSGIDaemonProcess {{oppia_wsgi_group}} python-path={{oppia_install_path}}:{{oppia_virtualenv_path}}/lib/python2.7/site-packages
+	WSGIDaemonProcess {{oppia_wsgi_group}} python-path={{oppia_root}}:{{oppia_virtualenv_path}}/lib/python2.7/site-packages
 	WSGIProcessGroup {{oppia_wsgi_group}}
 	WSGIScriptAlias / {{oppia_wsgi_path}}
 	WSGIPassAuthorization On

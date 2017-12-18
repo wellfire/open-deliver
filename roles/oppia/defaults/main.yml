@@ -23,7 +23,7 @@ oppia_media_root: "{{oppia_root}}/media"
 oppia_base_project: "{{oppia_root}}/oppia_core"
 oppia_config_path: "{{oppia_base_project}}"
 oppia_wsgi_path: "{{oppia_config_path}}/wsgi.py"
-oppia_wsgi_group: "localhost.oppia"
+oppia_wsgi_group: "localhost-oppia"
 
 oppia_django_settings_module: "oppia_core.settings"
 

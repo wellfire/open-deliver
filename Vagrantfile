@@ -36,7 +36,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.verbose = "true"
         ansible.ask_sudo_pass = false
         ansible.host_key_checking = false
-        # ansible.tags = "orb,common"
     end
 
 end

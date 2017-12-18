@@ -1,8 +1,8 @@
 <VirtualHost *:80>
 
 	ServerName {{orb_server_name}}
-	WSGIDaemonProcess localhost.mpower python-path=/home/www/platform/django-mpowering:/home/www/platform/env/lib/python2.7/site-packages
-	WSGIProcessGroup localhost.mpower
+	WSGIDaemonProcess localhost-mpower python-path=/home/www/platform/django-mpowering:/home/www/platform/env/lib/python2.7/site-packages
+	WSGIProcessGroup localhost-mpower
 	WSGIScriptAlias / /home/www/platform/mpower/mpower/wsgi.py
 	WSGIPassAuthorization On
 
