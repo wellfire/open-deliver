@@ -4,14 +4,15 @@
   vars_files:
     - vars/main.yml
   roles:
-      - { role: common, tags: [ 'common' ] }
-      - { role: geerlingguy.clamav, tags: [ 'common' ] }
-      - { role: geerlingguy.mysql, tags: [ 'mysql' ] }
-      - { role: geerlingguy.java, tags: [ 'java' ] }
-      - { role: andrewrothstein.python, tags: [ 'python' ] }
-      - { role: geerlingguy.php, tags: [ 'php' ] }
-      - { role: geerlingguy.php-mysql, tags: [ 'mysql', 'php' ] }
-      - { role: geerlingguy.apache, tags: [ 'apache', 'web' ] }
-      - { role: ansiblebit.mod_wsgi, tags: [ 'apache', 'web' ] }
-      - { role: geerlingguy.solr, tags: [ 'solr' ] }
-      - { role: orb, tags: [ 'orb', 'app' ] }
+    - { role: common, tags: [ 'common' ] }
+    - { role: geerlingguy.clamav, tags: [ 'common' ] }
+    - { role: geerlingguy.mysql, tags: [ 'mysql' ] }
+    - { role: geerlingguy.java, tags: [ 'java' ] }
+    - { role: andrewrothstein.python, tags: [ 'python' ] }
+    - { role: geerlingguy.php, tags: [ 'php' ] }
+    - { role: geerlingguy.php-mysql, tags: [ 'mysql', 'php' ] }
+    - { role: geerlingguy.apache, tags: [ 'apache', 'web' ] }
+    - { role: ansiblebit.mod_wsgi, tags: [ 'apache', 'web' ] }
+    - { role: geerlingguy.solr, tags: [ 'solr' ] }
+    - { role: orb, tags: [ 'orb', 'app' ] }
+    - { role: oppia, tags: [ 'oppia', 'app' ] }
