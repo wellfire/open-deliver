@@ -10,7 +10,7 @@
       "vm_name": "open-deliver-ubuntu-16.04-amd64",
       "disk_size": 15000,
       "headless": "true",
-      "http_directory": "http",
+      "http_directory": "config",
       "boot_wait": "5s",
       "boot_command": [
         "<enter><wait>",
