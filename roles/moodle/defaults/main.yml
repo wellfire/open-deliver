@@ -1,0 +1,33 @@
+---
+moodle_user: "www-data"
+
+moodle_root: "/home/www/moodle"
+moodle_data_path: "/home/www/moodledata"
+
+moodle_source:
+  git_remote_url: "https://github.com/moodle/moodle.git"
+  git_version_reference: "v3.3.3"
+  path: "{{moodle_root}}"
+
+moodle_theme:
+  git_remote_url: "https://github.com/mPowering/opendeliver-moodle-theme.git"
+  git_version_reference: "master"
+  path: "{{moodle_root}}/theme/opendeliver"
+
+moodle_blocks:
+  - git_remote_url: "https://github.com/DigitalCampus/moodle-block_oppia_mobile_export.git"
+    git_version_reference: "master"
+    path: "{{moodle_root}}/blocks/oppia_mobile_export"
+
+moodle_docs: "{{moodle_root}}/docs"
+
+moodle_mysql_db: "moodle"
+moodle_mysql_user: "moodleuser"
+moodle_mysql_password: "opendeliver"
+
+moodle_server_name: "moodle.localhost:8081"
+moodle_vhosts_filename: "moodle-http.conf"
+
+moodle_allowed_hosts:
+  - "moodle.localhost"
+

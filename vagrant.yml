@@ -16,3 +16,4 @@
     - { role: geerlingguy.solr, tags: [ 'solr' ] }
     - { role: orb, tags: [ 'orb', 'app' ] }
     - { role: oppia, tags: [ 'oppia', 'app' ] }
+    - { role: moodle, tags: [ 'moodle', 'app' ] }
