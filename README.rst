@@ -98,6 +98,10 @@ This would populate the `ALLOWED_HOSTS` values in the ORB settings file like so:
 
 Key settings to override include host/server names and database credentials.
 
+*NOTE*: this path is intentionally excluded from source control. If you have values here
+you want to track you can initialize a separate Git repo at `vars/local` or symlink a
+repository with the appropriate YAML files at the top level.
+
 Vagrant
 =======
 
