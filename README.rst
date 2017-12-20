@@ -75,6 +75,28 @@ Variables
 Variables used in the top-level variables folder are used to satisfy predefined
 variable names in existing roles, e.g. Apache.
 
+Default provided variables, such as host names, can be overridden on a build-by-build
+basis using locally provided, non-source controlled variable files placed in the `vars/local`
+folder.
+
+Add one or more YAML files and when provisioning the `common` role will read values
+from these files and update default variables.
+
+For example, the `vars/local/orb.yaml` file might look like this::
+
+    ---
+    orb_allowed_hosts:
+      - "health-platform.org"
+      - "www.health-platform.org"
+
+This would populate the `ALLOWED_HOSTS` values in the ORB settings file like so::
+
+    ALLOWED_HOSTS = [
+          "health-platform.org",
+          "www.health-platform.org",
+        ]
+
+Key settings to override include host/server names and database credentials.
 
 Vagrant
 =======

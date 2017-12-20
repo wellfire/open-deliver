@@ -72,6 +72,7 @@ local_data/
 local_settings.py
 local_data/
 *~
+vars/local
 
 # Vagrant and deployment related files #
 ########################################

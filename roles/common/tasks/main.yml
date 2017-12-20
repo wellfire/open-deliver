@@ -14,3 +14,11 @@
   apt:
     name: "python-dev"
     state: installed
+
+- name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+  include_vars:
+    dir: 'vars/local'
+    extensions:
+        - json
+        - yml
+        - yaml
