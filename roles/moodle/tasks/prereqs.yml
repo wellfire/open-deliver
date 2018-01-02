@@ -1,0 +1,13 @@
+---
+- name: Install Moodle required PHP extenions
+  apt:
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - 'php-zip'
+    - 'php-xmlrpc'
+    - 'php-soap'
+    - 'php-intl'
+  tags:
+    - php
+    - moodle
