@@ -82,3 +82,10 @@
     dest: "{{ apache_conf_path }}/sites-enabled/{{ moodle_vhosts_filename }}"
     state: link
   notify: restart apache
+
+- name: Schedule Moodle admin cron
+  cron:
+    name: "Moodle admin"
+    minute: "*/20"
+    job: "wget {{moodle_admin_cron}}"
+

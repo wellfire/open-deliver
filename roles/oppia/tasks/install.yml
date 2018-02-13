@@ -87,15 +87,28 @@
     group: "{{oppia_user}}"
     mode: "a+x"
 
-- name: Oppia cron script
+- name: Add Oppia cron script
   template:
     src: "cron.sh.j2"
     dest: "{{oppia_root}}/cron.sh"
 
+- name: Schedule Oppia cron script
+  cron:
+    name: "Run Oppia cron script"
+    minute: "51"
+    hour: "3"
+    job: "{{oppia_root}}/cron.sh"
+
 - name: Oppia cron summary script
   template:
     src: "cron-summary.sh.j2"
-    dest: "{{oppia_root}}/cron.sh"
+    dest: "{{oppia_root}}/cron-summary.sh"
+
+- name: Schedule Oppia cron summary script
+  cron:
+    name: "Run Oppia cron summary script"
+    minute: "17"
+    job: "{{oppia_root}}/cron-summary.sh"
 
 - name: Oppia Apache conf
   template:

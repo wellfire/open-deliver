@@ -31,3 +31,5 @@ moodle_vhosts_filename: "moodle-http.conf"
 moodle_allowed_hosts:
   - "moodle.localhost"
 
+
+moodle_admin_cron: "https://moodle.opendeliver.org/admin/cron.php"

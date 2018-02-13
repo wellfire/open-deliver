@@ -89,22 +89,50 @@
 - name: ORB clean uploads script
   template:
     src: "clean_uploads.sh.j2"
-    dest: "{{orb_root}}/clean_uploads.py"
+    dest: "{{orb_root}}/clean_uploads.sh"
+
+- name: Schedule ORB clean uploads script
+  cron:
+    name: "Run ORB clean uploads"
+    minute: "23"
+    hour: "4"
+    job: "{{orb_root}}/clean_uploads.sh"
 
 - name: ORB cron script
   template:
     src: "cron.sh.j2"
     dest: "{{orb_root}}/cron.sh"
 
+- name: Schedule ORB cron script
+  cron:
+    name: "Run ORB cron script"
+    minute: "23"
+    hour: "4"
+    job: "{{orb_root}}/cron.sh"
+
 - name: ORB link checker script
   template:
     src: "link-checker.sh.j2"
     dest: "{{orb_root}}/link-checker.sh"
 
+- name: Schedule ORB link checker script
+  cron:
+    name: "Run ORB link checker"
+    minute: "2"
+    hour: "3"
+    job: "{{orb_root}}/link-checker.sh"
+
 - name: ORB virus scan script
   template:
     src: "virus-scan.sh.j2"
     dest: "{{orb_root}}/virus-scan.sh"
+
+- name: Schedule ORB virus scan script
+  cron:
+    name: "Run ORB virus scan"
+    minute: "2"
+    hour: "3"
+    job: "{{orb_root}}/virus-scan.sh"
 
 - name: ORB Apache conf
   template:
