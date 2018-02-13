@@ -9,7 +9,7 @@
 - name: Set up backups database user
   mysql_user:
     name: "{{backup_user}}"
-    password: mpower
+    password: "{{backup_db_password}}"
     priv: '*.*:ALL'
     state: present
 

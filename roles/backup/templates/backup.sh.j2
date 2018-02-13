@@ -1,13 +1,13 @@
 #!/bin/sh
 
 DATE=`date '+%Y-%m-%d-%H-%M'`
-BACKUPDIR="/home/backup/db"
-BACKUPUPLOADSDIR="/home/backup/uploads"
+BACKUPDIR="{{backup_db}}"
+BACKUPUPLOADSDIR="{{backup_uploads}}"
 
 
 # Backup for ORB platform 
 ###############################################################
-/usr/bin/mysqldump -ubackup -p###### django_mpowering | gzip > $BACKUPDIR"/"$DATE-orb.gz
+/usr/bin/mysqldump -u {{backup_db_user}} -p {{backup_db_password}} django_mpowering | gzip > $BACKUPDIR"/"$DATE-orb.gz
 
 cd /home/www/platform/
 /bin/tar -czf $BACKUPUPLOADSDIR"/"$DATE-orb-media.tar.gz media
@@ -22,7 +22,7 @@ cd $BACKUPUPLOADSDIR
 
 # Backup for Moodle
 ###############################################################
-/usr/bin/mysqldump -ubackup -p###### moodle | gzip > $BACKUPDIR"/"$DATE-moodle.gz
+/usr/bin/mysqldump -u {{backup_db_user}} -p {{backup_db_password}} moodle | gzip > $BACKUPDIR"/"$DATE-moodle.gz
 
 cd /home/www/
 /bin/tar -czf $BACKUPUPLOADSDIR"/"$DATE-moodle-data.tar.gz moodledata
@@ -36,7 +36,7 @@ cd $BACKUPUPLOADSDIR
 
 # Backup for OppiaMobile
 ###############################################################
-/usr/bin/mysqldump -ubackup -p###### oppia | gzip > $BACKUPDIR"/"$DATE-oppia.gz
+/usr/bin/mysqldump -u {{backup_db_user}} -p {{backup_db_password}} oppia | gzip > $BACKUPDIR"/"$DATE-oppia.gz
 
 cd /home/www/oppia/
 /bin/tar -czf $BACKUPUPLOADSDIR"/"$DATE-oppia-uploads.tar.gz upload

@@ -17,4 +17,4 @@
     - { role: orb, tags: [ 'orb', 'app' ] }
     - { role: oppia, tags: [ 'oppia', 'app' ] }
     - { role: moodle, tags: [ 'moodle', 'app' ] }
-    - { role: backup, tags: [ 'common', 'app' ] }
+    - { role: backup, tags: [ 'backup', 'common', 'app' ] }
