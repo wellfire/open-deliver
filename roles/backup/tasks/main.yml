@@ -1,0 +1,43 @@
+---
+
+- name: Add backup system user
+  user:
+    name: "{{backup_user}}"
+    state: present
+    createhome: yes
+
+- name: Set up backups database user
+  mysql_user:
+    name: "{{backup_user}}"
+    password: mpower
+    priv: '*.*:ALL'
+    state: present
+
+- name: Backup script
+  template:
+    src: "backup.sh.j2"
+    dest: "{{backup_script}}"
+
+- name: DB backups directory
+  file:
+    path: "{{backup_db}}"
+    state: directory
+    mode: 0755
+    owner: "{{backup_user}}"
+    group: "{{backup_user}}"
+
+- name: uploads backups directory
+  file:
+    path: "{{backup_uploads}}"
+    state: directory
+    mode: 0755
+    owner: "{{backup_user}}"
+    group: "{{backup_user}}"
+
+- name: Add scheduled backup run
+  cron:
+    name: "Run backups"
+    minute: "3"
+    hour: "4"
+    day: "*/7"
+    job: "{{backup_script}}"

@@ -1,0 +1,7 @@
+---
+
+backup_user: "backup"
+backup_root: "/home/backup"
+backup_script: "{{backup_root}}/backup.sh"
+backup_db: "{{backup_root}}/db"
+backup_uploads: "{{backup_root}}/uploads"
