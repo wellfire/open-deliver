@@ -17,3 +17,14 @@
     virtualenv: "{{orb_virtualenv_path}}"
   tags:
     - deploy
+
+
+- name: Update solr config
+  copy:
+    src: "{{item}}"
+    dest: "/var/solr/data/orb/conf/{{item}}"
+    owner: solr
+    group: solr
+  with_items:
+    - "schema.xml"
+    - "solrconfig.xml"
