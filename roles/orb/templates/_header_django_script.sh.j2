@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd {{orb_virtualenv_path}}
+source bin/activate
+
+PYTHONPATH="{{django_orb.path}}:{{orb_root}}:{{orb_virtualenv_path}}/lib/python2.7/site-packages"
+export PYTHONPATH
+export DJANGO_SETTINGS_MODULE={{orb_django_settings_module}}

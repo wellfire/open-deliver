@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd {{oppia_virtualenv_path}}
+source bin/activate
+
+PYTHONPATH="{{oppia_root}}:{{oppia_virtualenv_path}}/lib/python2.7/site-packages"
+export PYTHONPATH
+export DJANGO_SETTINGS_MODULE={{oppia_django_settings_module}}

@@ -1,11 +1,3 @@
-#!/bin/bash
-
-cd /home/www/platform/env/
-source bin/activate
-
-PYTHONPATH="/home/www/platform/django-mpowering/:/home/www/platform/:/home/www/platform/env/lib/python2.7/site-packages"
-export PYTHONPATH
-export DJANGO_SETTINGS_MODULE=mpower.settings
+{% include '_header_django_script.sh.j2' %}
 
 python /home/www/platform/django-mpowering/orb/utils/validate_urls.py
-

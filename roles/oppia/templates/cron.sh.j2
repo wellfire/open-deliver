@@ -1,11 +1,4 @@
-#!/bin/bash
-
-cd /home/www/oppia/env/
-source bin/activate
-
-PYTHONPATH="/home/www/oppia/:/home/www/oppia/env/lib/python2.7/site-packages"
-export PYTHONPATH
-export DJANGO_SETTINGS_MODULE=oppia_core.settings
+{% include '_header_django_script.sh.j2' %}
 
 python /home/www/oppia/django-oppia/oppia/cron.py 0
 
