@@ -38,6 +38,10 @@ building and provisioning Vagrant boxes.
 Building
 --------
 
+Add the base box::
+
+    vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial32
+
 To run with Vagrant, use the Vagrant command::
 
     vagrant up

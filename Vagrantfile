@@ -7,7 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # https://vagrantcloud.com/ubuntu
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/xenial32"
+  # config.vm.box = "ubuntu/xenial64"
 
   config.vm.network "private_network", type: "dhcp"
 
