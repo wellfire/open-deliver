@@ -89,18 +89,9 @@
       "ssh_password": "ubuntu",
       "shutdown_command": "sudo systemctl poweroff",
       "vboxmanage": [
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--memory",
-          512
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--cpus",
-          1
-        ]
+        ["modifyvm", "{{.Name}}", "--memory", 512],
+        ["modifyvm", "{{.Name}}", "--cpus", 1],
+        ["modifyvm", "{{.Name}}", "--pae", "on"]
       ]
     }
   ],
