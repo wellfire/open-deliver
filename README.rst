@@ -35,6 +35,15 @@ Building local instances of any VM requires the following installed:
 Packer is required for building VM artifacts and Vagrant is required for
 building and provisioning Vagrant boxes.
 
+You will need to create a directory in your project which is where local configuration goes:
+
+    vars/local/
+
+This should include valid Ansible YAML variables (JSON works as well).
+
+This directory is excluded from source control. You may opt to source control your own local
+configuration and then symlink to this location.
+
 Building
 --------
 
