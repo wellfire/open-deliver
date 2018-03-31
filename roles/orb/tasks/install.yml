@@ -150,6 +150,15 @@
     state: link
   notify: restart apache
 
+- name: ORB HTTPS Apache conf
+  template:
+    src: "health-orb-ssl.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/{{ orb_vhosts_tls_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+
 - name: Install configured ORB peers
   django_manage:
     command: "add_peer {{item.host}} --name=\"{{item.name}}\" --user=\"{{item.user}}\" --key=\"{{item.key}}\""

@@ -33,6 +33,7 @@ orb_django_settings_module: "mpower.settings"
 
 orb_server_name: "orb.localhost"
 orb_vhosts_filename: "orb-http.conf"
+orb_vhosts_tls_filename: "orb-https.conf"
 
 orb_debug: "True"
 

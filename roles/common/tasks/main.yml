@@ -27,3 +27,11 @@
         - json
         - yml
         - yaml
+
+- name: Add Lets Encrypt domains dir
+  file:
+    state: directory
+    path: "{{letsencrypt_live}}"
+    mode: 0755
+    owner: root
+  become: yes

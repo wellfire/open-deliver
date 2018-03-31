@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Forward ports
   config.vm.network "forwarded_port", guest: 80, host: 8081 # Aapche
+  config.vm.network "forwarded_port", guest: 443, host: 8433 # Aapche
   config.vm.network "forwarded_port", guest: 8000, host: 8082 # Django dev server
   config.vm.network "forwarded_port", guest: 3306, host: 3316 # MySQL
   config.vm.network "forwarded_port", guest: 8983, host: 8989 # Solr
