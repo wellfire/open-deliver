@@ -149,3 +149,21 @@
     dest: "{{ apache_conf_path }}/sites-enabled/{{ orb_vhosts_filename }}"
     state: link
   notify: restart apache
+
+- name: Install configured ORB peers
+  django_manage:
+    command: "add_peer {{item.host}} --name=\"{{item.name}}\" --user=\"{{item.user}}\" --key=\"{{item.key}}\""
+    app_path: "{{orb_base_project}}"
+    settings: "{{orb_django_settings_module}}"
+    virtualenv: "{{orb_virtualenv_path}}"
+  with_items: "{{orb_peers}}"
+
+- name: Add local super users
+  django_manage:
+    command: "add_super_user --email={{item.email}} --password={{item.password}}"
+    app_path: "{{orb_base_project}}"
+    settings: "{{orb_django_settings_module}}"
+    virtualenv: "{{orb_virtualenv_path}}"
+  with_items: "{{orb_super_users}}"
+
+

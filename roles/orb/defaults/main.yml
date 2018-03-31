@@ -41,3 +41,6 @@ orb_allowed_hosts:
   - "od-orb.alexlittle.net"
 
 orb_secret_key: "4h*u))+!m_4dj=eea5i!6od+ic9o+u3tg_1y26myy)t+qt5ta="
+
+orb_peers: []  # set your own in var/local (see README for format)
+orb_super_users: []  # set your own in var/local (see README for format)
