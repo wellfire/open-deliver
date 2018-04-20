@@ -29,6 +29,7 @@ oppia_django_settings_module: "oppia_core.settings"
 
 oppia_server_name: "oppia.localhost"
 oppia_vhosts_filename: "oppia-http.conf"
+oppia_vhosts_tls_filename: "base-oppia-https.conf"
 
 oppia_debug: "True"
 

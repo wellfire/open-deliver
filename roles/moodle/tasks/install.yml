@@ -76,6 +76,15 @@
     mode: 0644
   notify: restart apache
 
+- name: Add base Moodle HTTPS Apache conf
+  template:
+    src: "https-vhost.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/{{ moodle_vhosts_tls_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+
 - name: Enable Moodle apache conf
   file:
     src: "{{ apache_conf_path }}/sites-available/{{ moodle_vhosts_filename }}"

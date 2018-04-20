@@ -27,6 +27,7 @@ moodle_mysql_password: "opendeliver"
 
 moodle_server_name: "moodle.localhost:8081"
 moodle_vhosts_filename: "moodle-http.conf"
+moodle_vhosts_tls_filename: "base-moodle-https.conf"
 
 moodle_allowed_hosts:
   - "moodle.localhost"

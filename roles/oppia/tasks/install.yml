@@ -119,6 +119,15 @@
     mode: 0644
   notify: restart apache
 
+- name: Add base Oppia HTTPS Apache conf
+  template:
+    src: "https-vhost.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/{{ oppia_vhosts_tls_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+
 - name: Enable Oppia apache conf
   file:
     src: "{{ apache_conf_path }}/sites-available/{{ oppia_vhosts_filename }}"
