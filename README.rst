@@ -115,6 +115,21 @@ Key settings to override include host/server names and database credentials.
 you want to track you can initialize a separate Git repo at `vars/local` or symlink a
 repository with the appropriate YAML files at the top level.
 
+HTTPS sites
+-----------
+
+In order to set up HTTPS vhosts on Apache, valid certificates are required. These can
+be setup using Let's Encrypt provided the chosen domains are public domains (e.g. not
+localhost domains) and that the instance of the virtual machine is available over the
+public Internet. This ensures that the Let's Encrypt certificate authority can verify
+the installation.
+
+The configuration system provides *base* HTTPS vhost files which should be found in the
+`sites-available` Apache folder. In order to enable HTTPS these should first be *copied*
+to a new file so that further edits are not overwritten, then these can be symlinked
+from the `sites-enabled` directory, and finally the Let's Encrypt toolset can be used
+to create new certificates.
+
 Vagrant
 =======
 
