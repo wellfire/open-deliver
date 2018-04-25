@@ -92,6 +92,8 @@ Default provided variables, such as host names, can be overridden on a build-by-
 basis using locally provided, non-source controlled variable files placed in the `vars/local`
 folder.
 
+**Any variable defined in a `defaults` folder can be overridden as described here**.
+
 Add one or more YAML files and when provisioning the `common` role will read values
 from these files and update default variables.
 
@@ -101,6 +103,11 @@ For example, the `vars/local/orb.yaml` file might look like this::
     orb_allowed_hosts:
       - "health-platform.org"
       - "www.health-platform.org"
+
+Note that the file should start with three dashes, `---`, on the first line like all of the
+other YAML files in the Ansible playbooks.
+
+Either the `yaml` or `yml` file extension can be used.
 
 This would populate the `ALLOWED_HOSTS` values in the ORB settings file like so::
 
