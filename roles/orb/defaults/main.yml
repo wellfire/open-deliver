@@ -7,7 +7,7 @@ orb_install_path: "{{orb_root}}/django-mpowering"
 
 django_orb:
   git_remote_url: "https://github.com/mPowering/django-orb.git"
-  git_version_reference: "v2.5.2"
+  git_version_reference: "2.8.0"
   path: "{{orb_root}}/django-mpowering"
 
 orb_translations:
