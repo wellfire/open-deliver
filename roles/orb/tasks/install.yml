@@ -152,7 +152,7 @@
 
 - name: ORB HTTPS Apache conf
   template:
-    src: "health-orb-ssl.conf.j2"
+    src: "https-vhost.conf.j2"
     dest: "{{ apache_conf_path }}/sites-available/{{ orb_vhosts_tls_filename }}"
     owner: root
     group: root

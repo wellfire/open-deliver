@@ -1,38 +1,5 @@
 <VirtualHost *:80>
 
-	ServerName {{oppia_server_name}}
-	WSGIDaemonProcess {{oppia_wsgi_group}} python-path={{oppia_root}}:{{oppia_virtualenv_path}}/lib/python2.7/site-packages
-	WSGIProcessGroup {{oppia_wsgi_group}}
-	WSGIScriptAlias / {{oppia_wsgi_path}}
-	WSGIPassAuthorization On
-
-	<Directory {{oppia_root}}>
-		Require all granted
-	</Directory>
-
-	ServerAdmin webmaster@localhost
-	DocumentRoot {{oppia_root}}
-
-	ErrorLog {{oppia_apache_error_log}}
-
-	# Possible values include: debug, info, notice, warn, error, crit,
-	# alert, emerg.
-	LogLevel warn
-
-	CustomLog {{oppia_apache_access_log}} combined
-
-	Alias /media {{oppia_media_root}}
-	<Directory "{{oppia_media_root}}">
-		Options MultiViews FollowSymLinks
-		AllowOverride None
-		Require all granted
-	</Directory>
-
-	Alias /static {{oppia_static_root}}
-	<Directory "{{oppia_static_root}}">
-		Options MultiViews FollowSymLinks
-		AllowOverride None
-		Require all granted
-	</Directory>
+    {% include 'http-core-instructions.conf.j2' %}
 
 </VirtualHost>

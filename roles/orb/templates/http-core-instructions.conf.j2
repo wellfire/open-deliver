@@ -1,9 +1,6 @@
-<VirtualHost *:443>
-	SSLEngine On
-
 	ServerName {{orb_server_name}}
-	WSGIDaemonProcess localhost.mpower-ssl python-path=/home/www/platform/django-mpowering:/home/www/platform/env/lib/python2.7/site-packages
-	WSGIProcessGroup localhost.mpower-ssl
+	WSGIDaemonProcess localhost-mpower python-path=/home/www/platform/django-mpowering:/home/www/platform/env/lib/python2.7/site-packages
+	WSGIProcessGroup localhost-mpower
 	WSGIScriptAlias / /home/www/platform/mpower/mpower/wsgi.py
 	WSGIPassAuthorization On
 
@@ -35,9 +32,3 @@
 		AllowOverride None
 		Require all granted
 	</Directory>
-
-# SSLCertificateFile /etc/letsencrypt/live/od-orb.alexlittle.net/fullchain.pem
-# SSLCertificateKeyFile /etc/letsencrypt/live/od-orb.alexlittle.net/privkey.pem
-# Include /etc/letsencrypt/options-ssl-apache.conf
-
-</VirtualHost>
